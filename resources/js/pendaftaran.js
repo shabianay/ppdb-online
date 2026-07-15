@@ -1,5 +1,5 @@
 // Pendaftaran Form JavaScript
-window.pendaftaranForm = function() {
+window.pendaftaranForm = function(config = {}) {
     return {
         steps: [
             'Data Diri',
@@ -9,78 +9,81 @@ window.pendaftaranForm = function() {
             'Konfirmasi'
         ],
         currentStep: 0,
-        formData: {},
-        lastSaved: null,
+        pendaftarId: config.pendaftarId || null,
+        autosaveUrl: config.autosaveUrl || null,
         isSaving: false,
+        lastSaved: null,
         saveInterval: null,
+
+        init() {
+            if (this.autosaveUrl && this.pendaftarId) {
+                this.startAutoSave();
+            }
+        },
+
         startAutoSave() {
-            this.saveData();n            this.saveInterval = setInterval(() => {
+            this.saveInterval = setInterval(() => {
                 this.saveData();
             }, 30000); // 30 seconds
         },
+
         saveData() {
-            if (this.isSaving) return;
+            if (this.isSaving || !this.autosaveUrl || !this.pendaftarId) return;
             
             this.isSaving = true;
-            const stepData = {};
-            
-            // Ambil data dari setiap step berdasarkan elemen dengan nama
-            const form = document.querySelector('#pendaftaran-form');
-            if (form) {
-                const formData = new FormData(form);
-                // Simpan hanya field yang tidak null/undefined
-                for (let [key, value] of formData.entries()) {
-                    if (value !== '') {
-                        stepData[key] = value;
-                    }
+            const form = document.querySelector('form');
+            if (!form) {
+                this.isSaving = false;
+                return;
+            }
+
+            const formData = new FormData(form);
+            const fields = {};
+            for (let [key, value] of formData.entries()) {
+                if (key !== '_token' && key !== '_method' && value !== '') {
+                    fields[key] = value;
                 }
             }
-            
-            // Update current step data
-            this.formData[this.currentStep] = stepData;
-            
-            // Kirim ke server via AJAX
-            fetch('{{ route('pendaftaran.autosave') }}', {
+
+            fetch(this.autosaveUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'X-HTTP-METHOD-OVERRIDE': 'POST'
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    step: this.currentStep,
-                    data: stepData
+                    pendaftar_id: this.pendaftarId,
+                    fields: fields
                 })
             })
             .then(response => response.json())
             .then(data => {
-                this.lastSaved = new Date();
+                this.lastSaved = new Date().toLocaleTimeString();
                 this.isSaving = false;
-                console.log('Data tersimpan');
             })
             .catch(error => {
-                console.error('Gagal menyimpan:', error);
+                console.error('Autosave failed:', error);
                 this.isSaving = false;
             });
         },
+
         nextStep() {
             if (this.currentStep < this.steps.length - 1) {
                 this.saveData();
                 this.currentStep++;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         },
+
         prevStep() {
             if (this.currentStep > 0) {
                 this.saveData();
                 this.currentStep--;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         },
-        goToStep(step) {
-            if (step >= 0 && step < this.steps.length) {
-                this.saveData();
-                this.currentStep = step;
-            }
-        },
+
         destroy() {
             if (this.saveInterval) {
                 clearInterval(this.saveInterval);

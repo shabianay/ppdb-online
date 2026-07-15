@@ -10,7 +10,10 @@
         </div>
     </x-slot>
 
-    <div class="py-8" x-data="pendaftaranForm()">
+    <div class="py-8" x-data="pendaftaranForm({
+        pendaftarId: {{ $pendaftar->id }},
+        autosaveUrl: '{{ route('pendaftaran.autosave') }}'
+    })">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             {{-- Progress Bar --}}
             <div class="mb-10">

@@ -78,7 +78,7 @@
 
     @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             const ctx = document.getElementById('pendaftarChart');
 
             const data = {
