@@ -10,7 +10,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-muted/50">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+        <a href="#guest-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:shadow-lg">Lompat ke konten utama</a>
+        <div id="guest-content" class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" role="main">
             <div class="mb-6">
                 <a href="/" wire:navigate>
                     <div class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg shadow-primary/25">

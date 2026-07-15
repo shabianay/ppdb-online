@@ -53,7 +53,7 @@
     </div>
 
     <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg aria-hidden="true" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" >
             <path d="M0 50C240 100 480 0 720 50C960 100 1200 0 1440 50V100H0V50Z" fill="white" fill-opacity="1" class="dark:fill-background"/>
         </svg>
     </div>
@@ -72,21 +72,21 @@
         <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="group p-8 bg-card rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-6 shadow-lg shadow-primary/25 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-7 h-7 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <svg aria-hidden="true"  class="w-7 h-7 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <h3 class="text-xl font-bold text-foreground mb-3">Mudah & Cepat</h3>
                 <p class="text-muted-foreground leading-relaxed">Proses pendaftaran dilakukan secara online dari mana saja dan kapan saja tanpa harus datang ke sekolah.</p>
             </div>
             <div class="group p-8 bg-card rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <svg aria-hidden="true"  class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
                 <h3 class="text-xl font-bold text-foreground mb-3">Transparan</h3>
                 <p class="text-muted-foreground leading-relaxed">Seluruh proses seleksi dapat dipantau secara real-time oleh pendaftar dengan sistem yang transparan.</p>
             </div>
             <div class="group p-8 bg-card rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border">
                 <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/25 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <svg aria-hidden="true"  class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
                 <h3 class="text-xl font-bold text-foreground mb-3">Akuntabel</h3>
                 <p class="text-muted-foreground leading-relaxed">Data dan hasil seleksi dijamin keakuratannya dengan sistem terintegrasi yang akuntabel.</p>
@@ -161,7 +161,7 @@
         <div class="text-center mt-10">
             <a href="{{ route('landing.jalur') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors">
                 Lihat Detail Jalur Pendaftaran
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                <svg aria-hidden="true"  class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
         </div>
     </div>
@@ -176,14 +176,14 @@
             </div>
             <a href="{{ route('landing.pengumuman') }}" class="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors shrink-0">
                 Lihat Semua
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                <svg aria-hidden="true"  class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
         </div>
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <article class="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border">
                 <div class="h-48 bg-gradient-to-br from-primary to-primary/60 relative overflow-hidden">
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <svg class="w-16 h-16 text-primary-foreground/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                        <svg aria-hidden="true"  class="w-16 h-16 text-primary-foreground/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
                     </div>
                     <div class="absolute top-4 left-4 bg-card/90 text-foreground text-xs font-semibold px-3 py-1 rounded-full">15 Jul 2026</div>
                 </div>
@@ -192,14 +192,14 @@
                     <p class="text-sm text-muted-foreground leading-relaxed mb-4">Hasil seleksi PPDB Tahun Ajaran 2026/2027 telah diumumkan. Silakan cek hasil seleksi melalui akun masing-masing.</p>
                     <a href="{{ route('landing.pengumuman-detail', ['id' => 1]) }}" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80">
                         Baca Selengkapnya
-                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg aria-hidden="true"   class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
             </article>
             <article class="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border">
                 <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 relative overflow-hidden">
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <svg aria-hidden="true"   class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                     <div class="absolute top-4 left-4 bg-card/90 text-foreground text-xs font-semibold px-3 py-1 rounded-full">10 Jul 2026</div>
                 </div>
@@ -208,14 +208,14 @@
                     <p class="text-sm text-muted-foreground leading-relaxed mb-4">Masa pendaftaran PPDB diperpanjang hingga 31 Juli 2026. Manfaatkan kesempatan ini untuk mendaftarkan putra/putri Anda.</p>
                     <a href="{{ route('landing.pengumuman-detail', ['id' => 2]) }}" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80">
                         Baca Selengkapnya
-                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg aria-hidden="true"   class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
             </article>
             <article class="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border">
                 <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        <svg aria-hidden="true"   class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                     </div>
                     <div class="absolute top-4 left-4 bg-card/90 text-foreground text-xs font-semibold px-3 py-1 rounded-full">5 Jul 2026</div>
                 </div>
@@ -224,7 +224,7 @@
                     <p class="text-sm text-muted-foreground leading-relaxed mb-4">Sosialisasi PPDB Online akan dilaksanakan pada 20 Juli 2026 secara daring. Seluruh orang tua calon peserta didik diharapkan hadir.</p>
                     <a href="{{ route('landing.pengumuman-detail', ['id' => 3]) }}" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80">
                         Baca Selengkapnya
-                        <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <svg aria-hidden="true"   class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
             </article>

@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pengumuman = Pengumuman::with('user')->latest()->paginate(15);
+        $query = Pengumuman::with('user');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('judul', 'like', "%{$search}%")
+                  ->orWhere('konten', 'like', "%{$search}%");
+            });
+        }
+
+        $pengumuman = $query->latest()->paginate(15)->withQueryString();
         return view('admin.pengumuman.index', compact('pengumuman'));
     }
 

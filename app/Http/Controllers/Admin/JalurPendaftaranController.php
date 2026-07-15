@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 
 class JalurPendaftaranController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jalur = JalurPendaftaran::withCount('pendaftar')->latest()->get();
+        $query = JalurPendaftaran::withCount('pendaftar');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
+                  ->orWhere('kode', 'like', "%{$search}%")
+                  ->orWhere('deskripsi', 'like', "%{$search}%");
+            });
+        }
+
+        $jalur = $query->latest()->get();
         return view('admin.jalur.index', compact('jalur'));
     }
 

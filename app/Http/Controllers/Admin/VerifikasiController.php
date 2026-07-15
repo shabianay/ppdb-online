@@ -9,12 +9,33 @@ use Illuminate\Http\Request;
 
 class VerifikasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pendaftar = Pendaftar::with('user', 'jalurPendaftaran', 'gelombang')
-            ->whereIn('status', ['menunggu_verifikasi', 'draft', 'diverifikasi', 'ditolak'])
-            ->latest()
-            ->paginate(15);
+        $query = Pendaftar::with('user', 'jalurPendaftaran', 'gelombang')
+            ->whereIn('status', ['menunggu_verifikasi', 'draft', 'diverifikasi', 'ditolak']);
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('nisn', 'like', "%{$search}%")
+                  ->orWhereHas('user', function ($q2) use ($search) {
+                      $q2->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        if ($request->filled('jalur')) {
+            $query->where('jalur_pendaftaran_id', $request->jalur);
+        }
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+        if ($request->filled('tanggal_awal')) {
+            $query->whereDate('created_at', '>=', $request->tanggal_awal);
+        }
+
+        $pendaftar = $query->latest()->paginate(15)->withQueryString();
 
         return view('admin.verifikasi.index', compact('pendaftar'));
     }

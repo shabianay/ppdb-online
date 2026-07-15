@@ -1,4 +1,4 @@
-<nav class="-mx-3 flex flex-1 justify-end">
+<nav class="-mx-3 flex flex-1 justify-end" role="navigation" aria-label="Navigasi pengguna">
     @auth
         <a
             href="{{ url('/dashboard') }}"

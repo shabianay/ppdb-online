@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-4">
             <a href="{{ route('pendaftaran.show', $pendaftar) }}" class="text-muted-foreground hover:text-foreground transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <svg aria-hidden="true"   class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
             </a>
             <h2 class="font-semibold text-xl text-foreground leading-tight">
                 {{ __('Edit Pendaftaran') }}
@@ -54,19 +54,19 @@
                     <div class="px-8 py-6 space-y-6">
                         <div>
                             <x-input-label for="nama_lengkap" value="Nama Lengkap" />
-                            <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap', $pendaftar->nama_lengkap)" required />
+                            <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap', $pendaftar->nama_lengkap)" required aria-label="Nama Lengkap" />
                             <x-input-error :messages="$errors->get('nama_lengkap')" class="mt-2" />
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <x-input-label for="nisn" value="NISN" />
-                                <x-text-input id="nisn" class="block mt-1 w-full" type="text" name="nisn" :value="old('nisn', $pendaftar->nisn)" required />
+                                <x-text-input id="nisn" class="block mt-1 w-full" type="text" name="nisn" :value="old('nisn', $pendaftar->nisn)" required aria-label="NISN" />
                                 <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
                             </div>
                             <div>
                                 <x-input-label for="nik" value="NIK" />
-                                <x-text-input id="nik" class="block mt-1 w-full" type="text" name="nik" :value="old('nik', $pendaftar->nik)" required />
+                                <x-text-input id="nik" class="block mt-1 w-full" type="text" name="nik" :value="old('nik', $pendaftar->nik)" required aria-label="NIK" />
                                 <x-input-error :messages="$errors->get('nik')" class="mt-2" />
                             </div>
                         </div>
@@ -74,19 +74,19 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <x-input-label for="tempat_lahir" value="Tempat Lahir" />
-                                <x-text-input id="tempat_lahir" class="block mt-1 w-full" type="text" name="tempat_lahir" :value="old('tempat_lahir', $pendaftar->tempat_lahir)" required />
+                                <x-text-input id="tempat_lahir" class="block mt-1 w-full" type="text" name="tempat_lahir" :value="old('tempat_lahir', $pendaftar->tempat_lahir)" required aria-label="Tempat Lahir" />
                                 <x-input-error :messages="$errors->get('tempat_lahir')" class="mt-2" />
                             </div>
                             <div>
                                 <x-input-label for="tanggal_lahir" value="Tanggal Lahir" />
-                                <x-text-input id="tanggal_lahir" class="block mt-1 w-full" type="date" name="tanggal_lahir" :value="old('tanggal_lahir', $pendaftar->tanggal_lahir->format('Y-m-d'))" required />
+                                <x-text-input id="tanggal_lahir" class="block mt-1 w-full" type="date" name="tanggal_lahir" :value="old('tanggal_lahir', $pendaftar->tanggal_lahir->format('Y-m-d'))" required aria-label="Tanggal Lahir" />
                                 <x-input-error :messages="$errors->get('tanggal_lahir')" class="mt-2" />
                             </div>
                         </div>
 
                         <div>
                             <x-input-label for="jenis_kelamin" value="Jenis Kelamin" />
-                            <select id="jenis_kelamin" name="jenis_kelamin" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm">
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" aria-label="Jenis Kelamin">
                                 <option value="">Pilih Jenis Kelamin</option>
                                 <option value="L" {{ old('jenis_kelamin', $pendaftar->jenis_kelamin) === 'L' ? 'selected' : '' }}>Laki-laki</option>
                                 <option value="P" {{ old('jenis_kelamin', $pendaftar->jenis_kelamin) === 'P' ? 'selected' : '' }}>Perempuan</option>
@@ -96,19 +96,19 @@
 
                         <div>
                             <x-input-label for="alamat" value="Alamat" />
-                            <textarea id="alamat" name="alamat" rows="3" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required>{{ old('alamat', $pendaftar->alamat) }}</textarea>
+                            <textarea id="alamat" name="alamat" rows="3" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required aria-label="Alamat">{{ old('alamat', $pendaftar->alamat) }}</textarea>
                             <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <x-input-label for="asal_sekolah" value="Asal Sekolah" />
-                                <x-text-input id="asal_sekolah" class="block mt-1 w-full" type="text" name="asal_sekolah" :value="old('asal_sekolah', $pendaftar->asal_sekolah)" required />
+                                <x-text-input id="asal_sekolah" class="block mt-1 w-full" type="text" name="asal_sekolah" :value="old('asal_sekolah', $pendaftar->asal_sekolah)" required aria-label="Asal Sekolah" />
                                 <x-input-error :messages="$errors->get('asal_sekolah')" class="mt-2" />
                             </div>
                             <div>
                                 <x-input-label for="no_hp" value="No. HP" />
-                                <x-text-input id="no_hp" class="block mt-1 w-full" type="text" name="no_hp" :value="old('no_hp', $pendaftar->no_hp)" required />
+                                <x-text-input id="no_hp" class="block mt-1 w-full" type="text" name="no_hp" :value="old('no_hp', $pendaftar->no_hp)" required aria-label="Nomor Handphone" />
                                 <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
                             </div>
                         </div>
@@ -125,23 +125,23 @@
                         {{-- Ayah --}}
                         <div>
                             <h4 class="text-md font-semibold text-foreground mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                <svg aria-hidden="true"   class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                                 Data Ayah
                             </h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <x-input-label for="ayah_nama" value="Nama Ayah" />
-                                    <x-text-input id="ayah_nama" class="block mt-1 w-full" type="text" name="ayah_nama" :value="old('ayah_nama', $ayah->nama ?? '')" required />
+                                    <x-text-input id="ayah_nama" class="block mt-1 w-full" type="text" name="ayah_nama" :value="old('ayah_nama', $ayah->nama ?? '')" required aria-label="Nama Ayah" />
                                     <x-input-error :messages="$errors->get('ayah_nama')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ayah_pekerjaan" value="Pekerjaan Ayah" />
-                                    <x-text-input id="ayah_pekerjaan" class="block mt-1 w-full" type="text" name="ayah_pekerjaan" :value="old('ayah_pekerjaan', $ayah->pekerjaan ?? '')" required />
+                                    <x-text-input id="ayah_pekerjaan" class="block mt-1 w-full" type="text" name="ayah_pekerjaan" :value="old('ayah_pekerjaan', $ayah->pekerjaan ?? '')" required aria-label="Pekerjaan Ayah" />
                                     <x-input-error :messages="$errors->get('ayah_pekerjaan')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ayah_penghasilan" value="Penghasilan Ayah" />
-                                    <select id="ayah_penghasilan" name="ayah_penghasilan" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required>
+                                    <select id="ayah_penghasilan" name="ayah_penghasilan" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required aria-label="Penghasilan Ayah">
                                         <option value="">Pilih Penghasilan</option>
                                         <option value="< 1 Juta" {{ old('ayah_penghasilan', $ayah->penghasilan ?? '') === '< 1 Juta' ? 'selected' : '' }}>< Rp 1.000.000</option>
                                         <option value="1 - 2 Juta" {{ old('ayah_penghasilan', $ayah->penghasilan ?? '') === '1 - 2 Juta' ? 'selected' : '' }}>Rp 1.000.000 - Rp 2.000.000</option>
@@ -149,11 +149,10 @@
                                         <option value="5 - 10 Juta" {{ old('ayah_penghasilan', $ayah->penghasilan ?? '') === '5 - 10 Juta' ? 'selected' : '' }}>Rp 5.000.000 - Rp 10.000.000</option>
                                         <option value="> 10 Juta" {{ old('ayah_penghasilan', $ayah->penghasilan ?? '') === '> 10 Juta' ? 'selected' : '' }}>> Rp 10.000.000</option>
                                     </select>
-                                    <x-input-error :messages="$errors->get('ayah_penghasilan')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ayah_no_hp" value="No. HP Ayah" />
-                                    <x-text-input id="ayah_no_hp" class="block mt-1 w-full" type="text" name="ayah_no_hp" :value="old('ayah_no_hp', $ayah->no_hp ?? '')" required />
+                                    <x-text-input id="ayah_no_hp" class="block mt-1 w-full" type="text" name="ayah_no_hp" :value="old('ayah_no_hp', $ayah->no_hp ?? '')" required aria-label="Nomor Handphone Ayah" />
                                     <x-input-error :messages="$errors->get('ayah_no_hp')" class="mt-2" />
                                 </div>
                             </div>
@@ -162,23 +161,23 @@
                         {{-- Ibu --}}
                         <div class="pt-6 border-t border-border">
                             <h4 class="text-md font-semibold text-foreground mb-4 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                <svg aria-hidden="true"   class="w-5 h-5 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                                 Data Ibu
                             </h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <x-input-label for="ibu_nama" value="Nama Ibu" />
-                                    <x-text-input id="ibu_nama" class="block mt-1 w-full" type="text" name="ibu_nama" :value="old('ibu_nama', $ibu->nama ?? '')" required />
+                                    <x-text-input id="ibu_nama" class="block mt-1 w-full" type="text" name="ibu_nama" :value="old('ibu_nama', $ibu->nama ?? '')" required aria-label="Nama Ibu" />
                                     <x-input-error :messages="$errors->get('ibu_nama')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ibu_pekerjaan" value="Pekerjaan Ibu" />
-                                    <x-text-input id="ibu_pekerjaan" class="block mt-1 w-full" type="text" name="ibu_pekerjaan" :value="old('ibu_pekerjaan', $ibu->pekerjaan ?? '')" required />
+                                    <x-text-input id="ibu_pekerjaan" class="block mt-1 w-full" type="text" name="ibu_pekerjaan" :value="old('ibu_pekerjaan', $ibu->pekerjaan ?? '')" required aria-label="Pekerjaan Ibu" />
                                     <x-input-error :messages="$errors->get('ibu_pekerjaan')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ibu_penghasilan" value="Penghasilan Ibu" />
-                                    <select id="ibu_penghasilan" name="ibu_penghasilan" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required>
+                                    <select id="ibu_penghasilan" name="ibu_penghasilan" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required aria-label="Penghasilan Ibu">
                                         <option value="">Pilih Penghasilan</option>
                                         <option value="< 1 Juta" {{ old('ibu_penghasilan', $ibu->penghasilan ?? '') === '< 1 Juta' ? 'selected' : '' }}>< Rp 1.000.000</option>
                                         <option value="1 - 2 Juta" {{ old('ibu_penghasilan', $ibu->penghasilan ?? '') === '1 - 2 Juta' ? 'selected' : '' }}>Rp 1.000.000 - Rp 2.000.000</option>
@@ -186,11 +185,10 @@
                                         <option value="5 - 10 Juta" {{ old('ibu_penghasilan', $ibu->penghasilan ?? '') === '5 - 10 Juta' ? 'selected' : '' }}>Rp 5.000.000 - Rp 10.000.000</option>
                                         <option value="> 10 Juta" {{ old('ibu_penghasilan', $ibu->penghasilan ?? '') === '> 10 Juta' ? 'selected' : '' }}>> Rp 10.000.000</option>
                                     </select>
-                                    <x-input-error :messages="$errors->get('ibu_penghasilan')" class="mt-2" />
                                 </div>
                                 <div>
                                     <x-input-label for="ibu_no_hp" value="No. HP Ibu" />
-                                    <x-text-input id="ibu_no_hp" class="block mt-1 w-full" type="text" name="ibu_no_hp" :value="old('ibu_no_hp', $ibu->no_hp ?? '')" required />
+                                    <x-text-input id="ibu_no_hp" class="block mt-1 w-full" type="text" name="ibu_no_hp" :value="old('ibu_no_hp', $ibu->no_hp ?? '')" required aria-label="Nomor Handphone Ibu" />
                                     <x-input-error :messages="$errors->get('ibu_no_hp')" class="mt-2" />
                                 </div>
                             </div>
@@ -207,7 +205,7 @@
                     <div class="px-8 py-6 space-y-6">
                         <div>
                             <x-input-label for="jalur_pendaftaran_id" value="Jalur Pendaftaran" />
-                            <select id="jalur_pendaftaran_id" name="jalur_pendaftaran_id" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required>
+                            <select id="jalur_pendaftaran_id" name="jalur_pendaftaran_id" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required aria-label="Jalur Pendaftaran">
                                 <option value="">Pilih Jalur Pendaftaran</option>
                                 @foreach ($jalurPendaftaran as $jalur)
                                     <option value="{{ $jalur->id }}" {{ old('jalur_pendaftaran_id', $pendaftar->jalur_pendaftaran_id) == $jalur->id ? 'selected' : '' }}>
@@ -215,12 +213,11 @@
                                     </option>
                                 @endforeach
                             </select>
-                            <x-input-error :messages="$errors->get('jalur_pendaftaran_id')" class="mt-2" />
                         </div>
 
                         <div>
                             <x-input-label for="gelombang_id" value="Gelombang" />
-                            <select id="gelombang_id" name="gelombang_id" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required>
+                            <select id="gelombang_id" name="gelombang_id" class="block mt-1 w-full border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-xl shadow-sm" required aria-label="Gelombang Pendaftaran">
                                 <option value="">Pilih Gelombang</option>
                                 @foreach ($gelombang as $g)
                                     <option value="{{ $g->id }}" {{ old('gelombang_id', $pendaftar->gelombang_id) == $g->id ? 'selected' : '' }}>
@@ -228,7 +225,6 @@
                                     </option>
                                 @endforeach
                             </select>
-                            <x-input-error :messages="$errors->get('gelombang_id')" class="mt-2" />
                         </div>
                     </div>
                 </div>
@@ -296,17 +292,17 @@
                     <div>
                         <button type="button" x-show="currentStep > 0" @click="prevStep()" class="px-6 py-2.5 bg-muted text-foreground font-medium rounded-xl hover:bg-accent transition-all text-sm">
                             <span class="flex items-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                                 Sebelumnya
                             </span>
                         </button>
                     </div>
                     <div>
                         <button type="button" x-show="currentStep < steps.length - 1" @click="nextStep()" class="px-6 py-2.5 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition-all text-sm shadow-lg shadow-primary/25">
-                            <span class="flex items-center gap-2">Selanjutnya <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
+                            <span class="flex items-center gap-2">Selanjutnya <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
                         </button>
                         <button type="submit" x-show="currentStep === steps.length - 1" class="px-8 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 text-white font-semibold rounded-xl hover:from-green-700 hover:to-emerald-800 transition-all text-sm shadow-lg shadow-green-600/25">
-                            <span class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Simpan Perubahan</span>
+                            <span class="flex items-center gap-2"><svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Simpan Perubahan</span>
                         </button>
                     </div>
                 </div>

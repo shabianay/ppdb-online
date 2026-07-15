@@ -9,12 +9,20 @@ use Illuminate\Http\Request;
 
 class SeleksiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pendaftar = Pendaftar::with('user', 'jalurPendaftaran', 'hasilSeleksi')
-            ->where('status', 'diverifikasi')
-            ->latest()
-            ->paginate(20);
+        $query = Pendaftar::with('user', 'jalurPendaftaran', 'hasilSeleksi')
+            ->where('status', 'diverifikasi');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('nisn', 'like', "%{$search}%");
+            });
+        }
+
+        $pendaftar = $query->latest()->paginate(20)->withQueryString();
 
         return view('admin.seleksi.index', compact('pendaftar'));
     }

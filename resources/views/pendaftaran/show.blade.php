@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <a href="{{ route('pendaftaran.index') }}" class="text-muted-foreground hover:text-foreground transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <svg aria-hidden="true"   class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </a>
                 <h2 class="font-semibold text-xl text-foreground leading-tight">
                     {{ __('Detail Pendaftaran') }}
@@ -19,16 +19,6 @@
 
     <div class="py-8">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            @if (session('success'))
-                <div class="p-4 bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 rounded-2xl text-sm">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="p-4 bg-destructive/10 border border-destructive/20 text-destructive rounded-2xl text-sm">
-                    {{ session('error') }}
-                </div>
-            @endif
 
             {{-- Status Card --}}
             <div class="bg-card overflow-hidden shadow-sm sm:rounded-2xl">
@@ -192,15 +182,15 @@
                             @foreach ($pendaftar->dokumenPendaftar as $dokumen)
                                 <div class="flex items-center justify-between p-4 bg-muted/50 rounded-xl">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                            <svg aria-hidden="true" class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                         </div>
                                         <div>
                                             <p class="text-sm font-medium text-foreground">{{ $dokumen->nama }}</p>
                                             <p class="text-xs text-muted-foreground">{{ $dokumen->status_verifikasi ?? 'Belum diverifikasi' }}</p>
                                         </div>
                                     </div>
-                                    <a href="{{ Storage::url($dokumen->file_path) }}" target="_blank" class="px-3 py-1.5 bg-muted text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-colors">
+                                    <a href="{{ Storage::url($dokumen->file_path) }}" target="_blank" class="px-3 py-1.5 bg-muted text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-colors" aria-label="Lihat dokumen {{ $dokumen->nama }}">
                                         Lihat
                                     </a>
                                 </div>
@@ -209,7 +199,7 @@
                     @else
                         <div class="text-center py-6">
                             <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-muted flex items-center justify-center">
-                                <svg class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                <svg aria-hidden="true"   class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             </div>
                             <p class="text-sm text-muted-foreground">Belum ada dokumen yang diunggah</p>
                         </div>
@@ -236,7 +226,7 @@
                                             {{ ucfirst($tagihan->status ?? 'belum bayar') }}
                                         </span>
                                         @if ($tagihan->status !== 'lunas')
-                                            <a href="#" class="px-3 py-1.5 bg-primary text-white text-xs font-medium rounded-lg hover:opacity-90 transition-all">
+                                            <a href="#" class="px-3 py-1.5 bg-primary text-white text-xs font-medium rounded-lg hover:opacity-90 transition-all" aria-label="Bayar tagihan {{ $tagihan->jenis_biaya }}">
                                                 Bayar
                                             </a>
                                         @endif
@@ -247,7 +237,7 @@
                     @else
                         <div class="text-center py-6">
                             <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-muted flex items-center justify-center">
-                                <svg class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <svg aria-hidden="true"   class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </div>
                             <p class="text-sm text-muted-foreground">Belum ada tagihan</p>
                         </div>

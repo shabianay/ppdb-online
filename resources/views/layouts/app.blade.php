@@ -10,6 +10,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-background">
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg">Langsung ke konten utama</a>
         <div class="min-h-screen">
             <livewire:layout.navigation />
             @if (isset($header))
@@ -19,9 +20,10 @@
                     </div>
                 </header>
             @endif
-            <main>
+            <main id="main-content" role="main">
                 {{ $slot }}
             </main>
         </div>
+        <x:toast />
     </body>
 </html>

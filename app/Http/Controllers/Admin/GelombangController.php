@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 class GelombangController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $gelombang = Gelombang::withCount('pendaftar')->latest()->get();
+        $query = Gelombang::withCount('pendaftar');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('nama', 'like', "%{$search}%");
+        }
+
+        $gelombang = $query->latest()->get();
         return view('admin.gelombang.index', compact('gelombang'));
     }
 

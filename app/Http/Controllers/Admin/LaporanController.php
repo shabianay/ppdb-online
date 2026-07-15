@@ -14,6 +14,13 @@ class LaporanController extends Controller
     {
         $query = Pendaftar::with('user', 'jalurPendaftaran', 'gelombang');
 
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('nisn', 'like', "%{$search}%");
+            });
+        }
         if ($request->filled('jalur')) {
             $query->where('jalur_pendaftaran_id', $request->jalur);
         }
@@ -27,7 +34,7 @@ class LaporanController extends Controller
             $query->whereDate('created_at', '<=', $request->date_to);
         }
 
-        $pendaftar = $query->latest()->paginate(20);
+        $pendaftar = $query->latest()->paginate(20)->withQueryString();
         $totalPendaftar = Pendaftar::count();
 
         return view('admin.laporan.pendaftar', compact('pendaftar', 'totalPendaftar'));

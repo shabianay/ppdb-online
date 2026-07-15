@@ -27,7 +27,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 1 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Apa itu PPDB Online?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -39,7 +39,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 2 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Bagaimana cara mendaftar PPDB Online?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -60,7 +60,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 3 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Apa saja dokumen yang diperlukan untuk pendaftaran?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -80,7 +80,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 4 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Berapa biaya pendaftaran PPDB Online?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -92,7 +92,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 5 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Apa saja jalur pendaftaran yang tersedia?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -110,7 +110,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 6 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Bagaimana cara mengetahui hasil seleksi?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -127,7 +127,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 7 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Apa yang harus dilakukan jika lulus seleksi?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -145,7 +145,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 8 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Apakah bisa mengganti jalur pendaftaran setelah submit?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -157,7 +157,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 9 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Bagaimana jika lupa password akun PPDB?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
@@ -169,7 +169,7 @@
             <div class="bg-card rounded-2xl border border-border overflow-hidden" x-data="{ open: false }">
                 <button @click="open = !open; active = open ? 10 : null" class="w-full flex items-center justify-between p-6 text-left" :class="open ? 'bg-primary/5' : ''">
                     <span class="text-lg font-semibold text-foreground pr-4">Kapan jadwal pelaksanaan PPDB tahun ini?</span>
-                    <svg class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300" :  class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
                 <div x-show="open" x-collapse>
                     <div class="px-6 pb-6 text-muted-foreground leading-relaxed">

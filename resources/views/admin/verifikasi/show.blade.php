@@ -7,7 +7,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
             <a href="{{ route('admin.verifikasi.index') }}" class="text-sm text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-1 mb-1">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 Kembali ke Verifikasi
             </a>
             <h2 class="text-2xl font-bold text-foreground">{{ $pendaftar->nama_lengkap }}</h2>
@@ -36,7 +36,7 @@
             <div class="bg-card rounded-xl shadow-sm border border-border">
                 <div class="px-5 py-4 border-b border-border">
                     <h3 class="text-base font-semibold text-foreground flex items-center gap-2">
-                        <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <svg aria-hidden="true"   class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                         Data Diri
                     </h3>
                 </div>
@@ -90,7 +90,7 @@
             <div class="bg-card rounded-xl shadow-sm border border-border">
                 <div class="px-5 py-4 border-b border-border">
                     <h3 class="text-base font-semibold text-foreground flex items-center gap-2">
-                        <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <svg aria-hidden="true"   class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         Data Orang Tua
                     </h3>
                 </div>
@@ -126,7 +126,7 @@
             <div class="bg-card rounded-xl shadow-sm border border-border">
                 <div class="px-5 py-4 border-b border-border">
                     <h3 class="text-base font-semibold text-foreground flex items-center gap-2">
-                        <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <svg aria-hidden="true"   class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         Dokumen
                     </h3>
                 </div>
@@ -147,22 +147,22 @@
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-1 ml-2">
-                                    <a href="{{ asset('storage/' . $dok->file_path) }}" target="_blank" class="p-1.5 text-muted-foreground hover:text-cyan-600 hover:bg-cyan-50 rounded transition-colors" title="Lihat">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    <a href="{{ asset('storage/' . $dok->file_path) }}" target="_blank" class="p-1.5 text-muted-foreground hover:text-cyan-600 hover:bg-cyan-50 rounded transition-colors" title="Lihat" aria-label="Lihat dokumen">
+                                        <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                     </a>
                                     @if ($dok->status != 'diverifikasi')
                                         <form method="POST" action="{{ route('admin.dokumen.verifikasi', $dok) }}" class="inline">
                                             @csrf
                                             <input type="hidden" name="status" value="diverifikasi">
-                                            <button type="submit" class="p-1.5 text-green-400 hover:text-green-600 hover:bg-green-50 rounded transition-colors" title="Verifikasi Dokumen">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            <button type="submit" class="p-1.5 text-green-400 hover:text-green-600 hover:bg-green-50 rounded transition-colors" title="Verifikasi Dokumen" aria-label="Setujui dokumen">
+                                                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                             </button>
                                         </form>
                                         <form method="POST" action="{{ route('admin.dokumen.verifikasi', $dok) }}" class="inline">
                                             @csrf
                                             <input type="hidden" name="status" value="ditolak">
-                                            <button type="submit" class="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Tolak Dokumen">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                            <button type="submit" class="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Tolak Dokumen" aria-label="Tolak dokumen">
+                                                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                                             </button>
                                         </form>
                                     @endif
@@ -182,7 +182,7 @@
             <div class="bg-card rounded-xl shadow-sm border border-border">
                 <div class="px-5 py-4 border-b border-border">
                     <h3 class="text-base font-semibold text-foreground flex items-center gap-2">
-                        <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <svg aria-hidden="true"   class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                         Catatan Verifikasi
                     </h3>
                 </div>
@@ -202,7 +202,7 @@
                 <div class="bg-card rounded-xl shadow-sm border border-border">
                     <div class="px-5 py-4 border-b border-border">
                         <h3 class="text-base font-semibold text-foreground flex items-center gap-2">
-                            <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <svg aria-hidden="true"   class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             Aksi Verifikasi
                         </h3>
                     </div>
@@ -210,14 +210,14 @@
                         <form method="POST" action="{{ route('admin.verifikasi.approve', $pendaftar) }}" onsubmit="return confirm('Yakin ingin menyetujui pendaftar ini?')">
                             @csrf
                             <button type="submit" class="w-full px-4 py-2.5 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <svg aria-hidden="true"   class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 Setujui Pendaftar
                             </button>
                         </form>
                         <form method="POST" action="{{ route('admin.verifikasi.reject', $pendaftar) }}" onsubmit="return confirm('Yakin ingin menolak pendaftar ini?')">
                             @csrf
                             <button type="submit" class="w-full px-4 py-2.5 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                <svg aria-hidden="true"   class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                                 Tolak Pendaftar
                             </button>
                         </form>
