@@ -14,6 +14,10 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             {{-- Progress Bar --}}
             <div class="mb-10">
+                <div class="mb-4 h-2 bg-muted rounded-full overflow-hidden">
+                    <div class="h-full bg-primary transition-all duration-500 ease-out" 
+                         :style="'width: ' + ((currentStep + 1) / steps.length * 100) + '%'"></div>
+                </div>
                 <div class="flex items-center justify-between mb-4">
                     <template x-for="(step, index) in steps" :key="index">
                         <div class="flex items-center">

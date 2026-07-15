@@ -32,12 +32,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{pendaftar}', [App\Http\Controllers\PendaftaranController::class, 'show'])->name('show');
         Route::get('/{pendaftar}/edit', [App\Http\Controllers\PendaftaranController::class, 'edit'])->name('edit');
         Route::put('/{pendaftar}', [App\Http\Controllers\PendaftaranController::class, 'update'])->name('update');
+        Route::get('/{pendaftar}/pdf', [App\Http\Controllers\PendaftaranController::class, 'downloadPdf'])->name('pdf');
+        Route::post('/{pendaftar}/upload-dokumen', [App\Http\Controllers\DokumenPendaftarController::class, 'upload'])->name('upload-dokumen');
+        Route::post('/autosave', [App\Http\Controllers\PendaftaranAutoSaveController::class, 'store'])->name('autosave');
     });
     
     // Tagihan routes
     Route::get('/tagihan', [App\Http\Controllers\TagihanController::class, 'index'])->name('tagihan.index');
     Route::get('/tagihan/{tagihan}', [App\Http\Controllers\TagihanController::class, 'show'])->name('tagihan.show');
     Route::post('/tagihan/{tagihan}/bayar', [App\Http\Controllers\TagihanController::class, 'uploadBukti'])->name('tagihan.upload-bukti');
+    Route::get('/kwitansi/{pembayaran}', [App\Http\Controllers\TagihanController::class, 'downloadReceipt'])->name('tagihan.receipt');
     
     // Notifikasi routes
     Route::get('/notifikasi', [App\Http\Controllers\NotifikasiController::class, 'index'])->name('notifikasi.index');
@@ -47,6 +51,13 @@ Route::middleware(['auth'])->group(function () {
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Audit Log
+    Route::get('/audit-log', [App\Http\Controllers\Admin\AuditLogController::class, 'index'])->name('audit-log.index');
+    
+    // Settings
+    Route::get('/pengaturan', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+    Route::post('/pengaturan', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
     
     // Manajemen Jalur
     Route::resource('jalur-pendaftaran', App\Http\Controllers\Admin\JalurPendaftaranController::class);

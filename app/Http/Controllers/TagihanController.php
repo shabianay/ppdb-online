@@ -6,6 +6,7 @@ use App\Models\Tagihan;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TagihanController extends Controller
 {
@@ -55,5 +56,16 @@ class TagihanController extends Controller
         ]);
 
         return redirect()->route('tagihan.show', $tagihan)->with('success', 'Bukti bayar berhasil diupload, menunggu verifikasi');
+    }
+
+    public function downloadReceipt(Pembayaran $pembayaran)
+    {
+        if ($pembayaran->tagihan->pendaftar->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $pembayaran->load('tagihan.pendaftar');
+        $pdf = Pdf::loadView('tagihan.receipt', compact('pembayaran'));
+        return $pdf->download('Kwitansi-' . $pembayaran->kode_transaksi . '.pdf');
     }
 }

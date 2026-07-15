@@ -7,6 +7,7 @@ use App\Models\JalurPendaftaran;
 use App\Models\Gelombang;
 use App\Models\OrangTua;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PendaftaranController extends Controller
 {
@@ -33,8 +34,8 @@ class PendaftaranController extends Controller
     {
         $validated = $request->validate([
             'nama_lengkap'     => 'required|string|max:255',
-            'nisn'             => 'required|string|max:20',
-            'nik'              => 'required|string|max:20',
+            'nisn'             => 'required|numeric|digits_between:10,12',
+            'nik'              => 'required|string|digits:16',
             'tempat_lahir'     => 'required|string|max:255',
             'tanggal_lahir'    => 'required|date',
             'jenis_kelamin'    => 'required|in:L,P',
@@ -135,8 +136,8 @@ class PendaftaranController extends Controller
 
         $validated = $request->validate([
             'nama_lengkap'     => 'required|string|max:255',
-            'nisn'             => 'required|string|max:20',
-            'nik'              => 'required|string|max:20',
+            'nisn'             => 'required|numeric|digits_between:10,12',
+            'nik'              => 'required|string|digits:16',
             'tempat_lahir'     => 'required|string|max:255',
             'tanggal_lahir'    => 'required|date',
             'jenis_kelamin'    => 'required|in:L,P',
@@ -185,5 +186,17 @@ class PendaftaranController extends Controller
 
         return redirect()->route('pendaftaran.show', $pendaftar)
             ->with('success', 'Pendaftaran berhasil diperbarui.');
+    }
+
+    public function downloadPdf(Pendaftar $pendaftar)
+    {
+        if (auth()->user()->role !== 'admin' && $pendaftar->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $pendaftar->load('user', 'jalurPendaftaran', 'gelombang', 'orangTua', 'dokumenPendaftar.dokumenPersyaratan');
+
+        $pdf = Pdf::loadView('pendaftaran.pdf', compact('pendaftar'));
+        return $pdf->download('Kartu-Pendaftaran-' . $pendaftar->nama_lengkap . '.pdf');
     }
 }
