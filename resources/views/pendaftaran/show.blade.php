@@ -26,6 +26,28 @@
     <div class="py-8">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
+            @if (session('success'))
+                <div class="p-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 rounded-2xl text-sm font-medium flex items-center gap-2" role="alert">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 rounded-2xl text-sm font-medium flex items-center gap-2" role="alert">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l2-2m-2-2l-2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 rounded-2xl text-sm font-medium" role="alert">
+                    <ul class="list-disc list-inside space-y-1">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             {{-- Status Card --}}
             <div class="bg-card overflow-hidden shadow-sm sm:rounded-2xl">
                 <div class="px-8 py-6">
@@ -179,35 +201,70 @@
 
             {{-- Dokumen --}}
             <div class="bg-card overflow-hidden shadow-sm sm:rounded-2xl">
-                <div class="px-8 py-6 border-b border-border">
+                <div class="px-8 py-6 border-b border-border flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-foreground">Dokumen</h3>
+                    <span class="text-xs text-muted-foreground">{{ $pendaftar->dokumenPendaftar->count() }} / {{ $persyaratan->count() }} diunggah</span>
                 </div>
                 <div class="px-8 py-6">
-                    @if ($pendaftar->dokumenPendaftar->count() > 0)
-                        <div class="space-y-3">
-                            @foreach ($pendaftar->dokumenPendaftar as $dokumen)
-                                <div class="flex items-center justify-between p-4 bg-muted/50 rounded-xl">
-                                    <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                                            <svg aria-hidden="true" class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    @if ($persyaratan->count() > 0)
+                        <div class="space-y-4">
+                            @foreach ($persyaratan as $req)
+                                @php $uploaded = $pendaftar->dokumenPendaftar->where('dokumen_persyaratan_id', $req->id)->first(); @endphp
+                                <div class="p-4 bg-muted/30 rounded-xl border border-border">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <div class="flex items-start gap-3 min-w-0 flex-1">
+                                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-foreground">{{ $req->nama }}</p>
+                                                @if ($req->keterangan)
+                                                    <p class="text-xs text-muted-foreground mt-0.5">{{ $req->keterangan }}</p>
+                                                @endif
+                                                <p class="text-[11px] text-muted-foreground/60 mt-0.5">Format: {{ $req->format_file ?? 'jpg,jpeg,png,pdf' }} | Maks: {{ $req->max_size ?? 2 }}MB</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-foreground">{{ $dokumen->nama }}</p>
-                                            <p class="text-xs text-muted-foreground">{{ $dokumen->status_verifikasi ?? 'Belum diverifikasi' }}</p>
+                                        <div class="flex items-center gap-2 shrink-0">
+                                            @if ($uploaded)
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                                    @if($uploaded->status == 'diverifikasi') bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400
+                                                    @elseif($uploaded->status == 'ditolak') bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400
+                                                    @else bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400 @endif">
+                                                    {{ $uploaded->status == 'diverifikasi' ? 'Terverifikasi' : ($uploaded->status == 'ditolak' ? 'Ditolak' : 'Menunggu') }}
+                                                </span>
+                                                <a href="{{ Storage::url($uploaded->file_path) }}" target="_blank" class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Lihat" aria-label="Lihat dokumen">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
-                                    <a href="{{ Storage::url($dokumen->file_path) }}" target="_blank" class="px-3 py-1.5 bg-muted text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-colors" aria-label="Lihat dokumen {{ $dokumen->nama }}">
-                                        Lihat
-                                    </a>
+                                    <form method="POST" action="{{ route('pendaftaran.upload-dokumen', $pendaftar) }}" enctype="multipart/form-data" class="mt-3">
+                                        @csrf
+                                        <input type="hidden" name="dokumen_persyaratan_id" value="{{ $req->id }}">
+                                        <div class="flex items-center gap-3">
+                                            <input type="file" name="file" accept="{{ $req->format_file ? '.' . str_replace(',', ',.', $req->format_file) : '.jpg,.jpeg,.png,.pdf' }}" 
+                                                class="block w-full text-sm text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer"
+                                                aria-label="Upload {{ $req->nama }}" {{ !$uploaded ? 'required' : '' }}>
+                                            <button type="submit" class="px-4 py-1.5 bg-primary text-white text-xs font-semibold rounded-lg hover:opacity-90 transition-all shrink-0">
+                                                {{ $uploaded ? 'Ganti' : 'Upload' }}
+                                            </button>
+                                        </div>
+                                        @error('file')
+                                            <p class="text-xs text-destructive mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </form>
+                                    @if ($uploaded && $uploaded->catatan)
+                                        <p class="text-xs text-muted-foreground mt-2 italic">Catatan: {{ $uploaded->catatan }}</p>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
                     @else
                         <div class="text-center py-6">
                             <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-muted flex items-center justify-center">
-                                <svg aria-hidden="true"   class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                <svg class="w-7 h-7 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             </div>
-                            <p class="text-sm text-muted-foreground">Belum ada dokumen yang diunggah</p>
+                            <p class="text-sm text-muted-foreground">Belum ada persyaratan dokumen yang ditentukan</p>
                         </div>
                     @endif
                 </div>

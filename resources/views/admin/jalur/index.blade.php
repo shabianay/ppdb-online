@@ -33,18 +33,18 @@
     </div>
 
     <div class="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
-        <div class="overflow-x-auto max-h-[600px]">
-            <table class="w-full text-sm" role="table" aria-label="Daftar jalur pendaftaran">
-                <thead class="sticky top-0 z-10">
-                    <tr class="bg-muted/90 backdrop-blur shadow-sm text-left">
-                        <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Kode</th>
+        <div class="overflow-x-auto min-w-full">
+            <table class="w-full text-sm border-collapse" role="table" aria-label="Daftar jalur pendaftaran">
+                <thead class="sticky top-0 z-10 bg-muted/90 backdrop-blur shadow-sm">
+                    <tr>
+                        <th class="px-5 py-3 font-semibold text-muted-foreground text-left">Kode</th>
                         <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Nama Jalur</th>
                         <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Kuota</th>
                         <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Terdaftar</th>
                         <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Tanggal Mulai</th>
                         <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Tanggal Selesai</th>
-                        <th class="px-5 py-4 font-semibold text-muted-foreground text-left">Status</th>
-                        <th class="px-5 py-4 font-semibold text-muted-foreground text-center">Aksi</th>
+                        <th class="px-5 py-3 font-semibold text-muted-foreground text-left">Status</th>
+                        <th class="px-5 py-3 font-semibold text-muted-foreground text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-border">
@@ -67,20 +67,22 @@
                             </td>
                             <td class="px-5 py-3 text-center">
                                 <div class="flex items-center justify-center gap-1">
-                                    <button @@click="$dispatch('open-modal', 'editJalur-{{ $j->id }}')" class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="Edit" aria-label="Edit">
+                                    <button @@click="$dispatch('open-modal', 'editJalur-{{ $j->id }}')" class="p-2 text-primary hover:bg-primary/10 dark:hover:bg-primary/20 rounded-lg transition-colors" title="Edit" aria-label="Edit">
                                         <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                     </button>
                                     <form method="POST" action="{{ route('admin.jalur-pendaftaran.update', $j) }}" class="inline">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="aktif" value="{{ $j->aktif ? 0 : 1 }}">
-                                        <button type="submit" class="p-2 text-muted-foreground hover:text-{{ $j->aktif ? 'red' : 'green' }}-600 hover:bg-muted/50 rounded-lg transition-colors" title="{{ $j->aktif ? 'Nonaktifkan' : 'Aktifkan' }}" aria-label="{{ $j->aktif ? 'Nonaktifkan' : 'Aktifkan' }}">
-                                            @if ($j->aktif)
-                                                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                            @else
-                                                <svg aria-hidden="true"   class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                            @endif
-                                        </button>
+                                         @if ($j->aktif)
+                                            <button type="submit" class="p-2 text-destructive hover:bg-destructive/10 rounded-lg transition-colors" title="Nonaktifkan" aria-label="Nonaktifkan">
+                                                <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            </button>
+                                        @else
+                                            <button type="submit" class="p-2 text-green-600 dark:text-green-400 hover:bg-green-500/10 dark:hover:bg-green-500/20 rounded-lg transition-colors" title="Aktifkan" aria-label="Aktifkan">
+                                                <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            </button>
+                                        @endif
                                     </form>
                                 </div>
                             </td>
@@ -114,25 +116,25 @@
                     @csrf
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Kode <span class="text-red-500">*</span></label>
-                            <input type="text" name="kode" required class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" placeholder="Misal: AFIRMASI" aria-label="Kode Jalur">
+                            <label class="block text-sm font-medium text-foreground mb-1">Kode <span class="text-destructive">*</span></label>
+                            <input type="text" name="kode" required class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" placeholder="Misal: AFIRMASI" aria-label="Kode Jalur">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Nama Jalur <span class="text-red-500">*</span></label>
-                            <input type="text" name="nama" required class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" placeholder="Nama jalur pendaftaran" aria-label="Nama Jalur">
+                            <label class="block text-sm font-medium text-foreground mb-1">Nama Jalur <span class="text-destructive">*</span></label>
+                            <input type="text" name="nama" required class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" placeholder="Nama jalur pendaftaran" aria-label="Nama Jalur">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Deskripsi</label>
-                            <textarea name="deskripsi" rows="3" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" placeholder="Deskripsi jalur pendaftaran" aria-label="Deskripsi Jalur"></textarea>
+                            <textarea name="deskripsi" rows="3" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" placeholder="Deskripsi jalur pendaftaran" aria-label="Deskripsi Jalur"></textarea>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Kuota</label>
-                            <input type="number" name="kuota" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" placeholder="0 = tidak terbatas" aria-label="Kuota">
+                            <input type="number" name="kuota" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" placeholder="0 = tidak terbatas" aria-label="Kuota">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Aktif</label>
-                            <select name="aktif" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Status Aktif">
+                            <select name="aktif" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Status Aktif">
                                 <option value="1">Aktif</option>
                                 <option value="0">Nonaktif</option>
                             </select>
@@ -141,11 +143,11 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Tanggal Mulai</label>
-                            <input type="date" name="tanggal_mulai" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Tanggal Mulai">
+                            <input type="date" name="tanggal_mulai" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Tanggal Mulai">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Tanggal Selesai</label>
-                            <input type="date" name="tanggal_selesai" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Tanggal Selesai">
+                            <input type="date" name="tanggal_selesai" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Tanggal Selesai">
                             </div>
                         </div>
                     </div>
@@ -175,25 +177,25 @@
                         @method('PUT')
                         <div class="space-y-4">
                             <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Kode <span class="text-red-500">*</span></label>
-                            <input type="text" name="kode" value="{{ $j->kode }}" required class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Kode Jalur">
+                            <label class="block text-sm font-medium text-foreground mb-1">Kode <span class="text-destructive">*</span></label>
+                            <input type="text" name="kode" value="{{ $j->kode }}" required class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Kode Jalur">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Nama Jalur <span class="text-red-500">*</span></label>
-                            <input type="text" name="nama" value="{{ $j->nama }}" required class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Nama Jalur">
+                            <label class="block text-sm font-medium text-foreground mb-1">Nama Jalur <span class="text-destructive">*</span></label>
+                            <input type="text" name="nama" value="{{ $j->nama }}" required class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Nama Jalur">
                             </div>
                             <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Deskripsi</label>
-                            <textarea name="deskripsi" rows="3" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Deskripsi Jalur">{{ $j->deskripsi }}</textarea>
+                            <textarea name="deskripsi" rows="3" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Deskripsi Jalur">{{ $j->deskripsi }}</textarea>
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Kuota</label>
-                            <input type="number" name="kuota" value="{{ $j->kuota }}" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Kuota">
+                            <input type="number" name="kuota" value="{{ $j->kuota }}" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Kuota">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-foreground mb-1">Aktif</label>
-                            <select name="aktif" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Status Aktif">
+                            <select name="aktif" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Status Aktif">
                                 <option value="1" {{ $j->aktif ? 'selected' : '' }}>Aktif</option>
                                 <option value="0" {{ !$j->aktif ? 'selected' : '' }}>Nonaktif</option>
                             </select>
@@ -201,12 +203,12 @@
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Tanggal Mulai</label>
-                            <input type="date" name="tanggal_mulai" value="{{ $j->tanggal_mulai ? $j->tanggal_mulai->format('Y-m-d') : '' }}" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Tanggal Mulai">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-foreground mb-1">Tanggal Selesai</label>
-                            <input type="date" name="tanggal_selesai" value="{{ $j->tanggal_selesai ? $j->tanggal_selesai->format('Y-m-d') : '' }}" class="w-full rounded-lg border-border text-sm focus:ring-primary focus:border-primary" aria-label="Tanggal Selesai">
+                                    <label class="block text-sm font-medium text-foreground mb-1">Tanggal Mulai</label>
+                                    <input type="date" name="tanggal_mulai" value="{{ $j->tanggal_mulai ? \Carbon\Carbon::parse($j->tanggal_mulai)->format('Y-m-d') : '' }}" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Tanggal Mulai">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-foreground mb-1">Tanggal Selesai</label>
+                                    <input type="date" name="tanggal_selesai" value="{{ $j->tanggal_selesai ? \Carbon\Carbon::parse($j->tanggal_selesai)->format('Y-m-d') : '' }}" class="w-full rounded-lg border-border text-sm focus:ring-ring focus:border-ring" aria-label="Tanggal Selesai">
                                 </div>
                             </div>
                         </div>
@@ -222,5 +224,4 @@
 @endsection
 
 @push('scripts')
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 @endpush

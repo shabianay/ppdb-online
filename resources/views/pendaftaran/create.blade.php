@@ -5,7 +5,40 @@
         </h2>
     </x-slot>
 
-    <div class="py-8" x-data="pendaftaranForm()">
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('pendaftaranForm', () => ({
+                currentStep: 0,
+                steps: ['Data Diri', 'Data Orang Tua', 'Jalur & Gelombang', 'Konfirmasi'],
+                get formData() {
+                    const form = document.querySelector('form');
+                    if (!form) return {};
+                    const fd = new FormData(form);
+                    return Object.fromEntries(fd.entries());
+                },
+                get selectedJalurName() {
+                    const select = document.getElementById('jalur_pendaftaran_id');
+                    return select ? select.options[select.selectedIndex]?.text || '-' : '-';
+                },
+                get selectedGelombangName() {
+                    const select = document.getElementById('gelombang_id');
+                    return select ? select.options[select.selectedIndex]?.text || '-' : '-';
+                },
+                nextStep() {
+                    if (this.currentStep < this.steps.length - 1) {
+                        this.currentStep++;
+                    }
+                },
+                prevStep() {
+                    if (this.currentStep > 0) {
+                        this.currentStep--;
+                    }
+                }
+            }));
+        });
+    </script>
+
+    <div class="py-8" x-data="pendaftaranForm">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             {{-- Progress Bar --}}
             <div class="mb-10">
@@ -211,7 +244,7 @@
                                 @endforeach
                             </select>
                             @foreach ($jalurPendaftaran as $jalur)
-                                <div x-show="$el.closest('div').querySelector('#jalur_pendaftaran_id').value == {{ $jalur->id }}" class="mt-3 p-3 bg-primary/5 rounded-xl text-sm text-primary">
+                                <div x-show="document.getElementById('jalur_pendaftaran_id')?.value == {{ $jalur->id }}" class="mt-3 p-3 bg-primary/5 rounded-xl text-sm text-primary">
                                     {{ $jalur->deskripsi }}
                                 </div>
                             @endforeach
@@ -347,39 +380,4 @@
             </form>
         </div>
     </div>
-
-    @push('scripts')
-    <script>
-        function pendaftaranForm() {
-            return {
-                currentStep: 0,
-                steps: ['Data Diri', 'Data Orang Tua', 'Jalur & Gelombang', 'Konfirmasi'],
-                get formData() {
-                    const form = document.querySelector('form');
-                    if (!form) return {};
-                    const fd = new FormData(form);
-                    return Object.fromEntries(fd.entries());
-                },
-                get selectedJalurName() {
-                    const select = document.getElementById('jalur_pendaftaran_id');
-                    return select ? select.options[select.selectedIndex]?.text || '-' : '-';
-                },
-                get selectedGelombangName() {
-                    const select = document.getElementById('gelombang_id');
-                    return select ? select.options[select.selectedIndex]?.text || '-' : '-';
-                },
-                nextStep() {
-                    if (this.currentStep < this.steps.length - 1) {
-                        this.currentStep++;
-                    }
-                },
-                prevStep() {
-                    if (this.currentStep > 0) {
-                        this.currentStep--;
-                    }
-                }
-            }
-        }
-    </script>
-    @endpush
 </x-app-layout>

@@ -86,7 +86,7 @@
                             </div>
                             <div>
                                 <x-input-label for="tanggal_lahir" value="Tanggal Lahir" />
-                                <x-text-input id="tanggal_lahir" class="block mt-1 w-full" type="date" name="tanggal_lahir" :value="old('tanggal_lahir', $pendaftar->tanggal_lahir->format('Y-m-d'))" required aria-label="Tanggal Lahir" />
+                                <x-text-input id="tanggal_lahir" class="block mt-1 w-full" type="date" name="tanggal_lahir" :value="old('tanggal_lahir', $pendaftar->tanggal_lahir)" required aria-label="Tanggal Lahir" />
                                 <x-input-error :messages="$errors->get('tanggal_lahir')" class="mt-2" />
                             </div>
                         </div>

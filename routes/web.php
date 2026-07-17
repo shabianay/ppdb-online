@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\UserDashboardController;
 
 // Public routes
 Route::get('/', [LandingPageController::class, 'index'])->name('landing.index');
@@ -16,13 +16,14 @@ Route::get('/unduhan/{file}', [LandingPageController::class, 'unduhan'])->name('
 
 // Authenticated user routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
+    Route::post('/profile/update-information', [App\Http\Controllers\Auth\ProfileController::class, 'updateInformation'])->name('profile.update-information');
+    Route::post('/profile/update-password', [App\Http\Controllers\Auth\ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    Route::post('/profile/destroy', [App\Http\Controllers\Auth\ProfileController::class, 'destroy'])->name('profile.destroy');
     
     // Pendaftaran routes
     Route::prefix('pendaftaran')->name('pendaftaran.')->group(function () {
@@ -77,6 +78,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Manajemen Pengumuman
     Route::resource('pengumuman', App\Http\Controllers\Admin\PengumumanController::class);
     
+    // Manajemen Dokumen Persyaratan
+    Route::resource('dokumen-persyaratan', App\Http\Controllers\Admin\DokumenPersyaratanController::class);
+
     // Manajemen User
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
     

@@ -120,7 +120,7 @@
 <section class="py-20 lg:py-28 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
-            <span class="inline-block px-4 py-1.5 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-full text-sm font-medium mb-4">Alur Pendaftaran</span>
+            <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Alur Pendaftaran</span>
             <h2 class="text-3xl sm:text-4xl font-bold text-foreground">Alur Pendaftaran PPDB</h2>
             <p class="mt-4 text-muted-foreground leading-relaxed">Berikut adalah alur lengkap pendaftaran PPDB Online dari awal hingga akhir.</p>
         </div>

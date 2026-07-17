@@ -54,7 +54,7 @@
 
     <div class="absolute bottom-0 left-0 right-0">
         <svg aria-hidden="true" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" >
-            <path d="M0 50C240 100 480 0 720 50C960 100 1200 0 1440 50V100H0V50Z" fill="white" fill-opacity="1" class="dark:fill-background"/>
+            <path d="M0 50C240 100 480 0 720 50C960 100 1200 0 1440 50V100H0V50Z" fill="white" fill-opacity="1" class="dark:[&>*]:fill-background"/>
         </svg>
     </div>
 </section>

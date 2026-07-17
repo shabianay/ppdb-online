@@ -98,9 +98,13 @@ class PendaftaranController extends Controller
             abort(403);
         }
 
-        $pendaftar->load(['user', 'jalurPendaftaran', 'gelombang', 'orangTua', 'dokumenPendaftar', 'tagihan']);
+        $pendaftar->load(['user', 'jalurPendaftaran', 'gelombang', 'orangTua', 'dokumenPendaftar.dokumenPersyaratan', 'tagihan']);
 
-        return view('pendaftaran.show', compact('pendaftar'));
+        $persyaratan = \App\Models\DokumenPersyaratan::where('jalur_pendaftaran_id', $pendaftar->jalur_pendaftaran_id)
+            ->where('aktif', true)
+            ->get();
+
+        return view('pendaftaran.show', compact('pendaftar', 'persyaratan'));
     }
 
     public function edit(Pendaftar $pendaftar)

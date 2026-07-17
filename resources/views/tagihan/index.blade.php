@@ -45,7 +45,7 @@
                     </div>
                     <div class="bg-card overflow-hidden shadow-sm sm:rounded-2xl p-5">
                         <p class="text-sm text-muted-foreground">Belum Dibayar</p>
-                        <p class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">Rp {{ number_format($totalBelumBayar, 0, ',', '.') }}</p>
+                        <p class="text-2xl font-bold text-amber-600 dark:text-amber-400">Rp {{ number_format($totalBelumBayar, 0, ',', '.') }}</p>
                         <p class="text-xs text-muted-foreground/60 mt-1">{{ $tagihan->where('status', 'belum_bayar')->count() }} tagihan</p>
                     </div>
                     <div class="bg-card overflow-hidden shadow-sm sm:rounded-2xl p-5">

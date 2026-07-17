@@ -65,7 +65,7 @@
                         </div>
                         <div>
                             <span class="block text-sm text-muted-foreground">Status</span>
-                            <span class="block font-medium {{ $tagihan->status === 'lunas' ? 'text-green-600 dark:text-green-400' : ($tagihan->status === 'kadaluarsa' ? 'text-red-600 dark:text-red-400' : 'text-yellow-600 dark:text-yellow-400') }}">
+                            <span class="block font-medium {{ $tagihan->status === 'lunas' ? 'text-green-600 dark:text-green-400' : ($tagihan->status === 'kadaluarsa' ? 'text-destructive' : 'text-amber-600 dark:text-amber-400') }}">
                                 {{ $statusLabel[$tagihan->status] ?? $tagihan->status }}
                             </span>
                         </div>

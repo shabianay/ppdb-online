@@ -1,35 +1,34 @@
 <?php
 
+use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 
 Route::middleware('guest')->group(function () {
-    Volt::route('/register', 'pages.auth.register')
-        ->name('register');
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
 
-    Volt::route('/login', 'pages.auth.login')
-        ->name('login');
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
 
-    Volt::route('/forgot-password', 'pages.auth.forgot-password')
-        ->name('password.request');
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
 
-    Volt::route('/reset-password/{token}', 'pages.auth.reset-password')
-        ->name('password.reset');
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'create'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('password.store');
 });
 
 Route::middleware('auth')->group(function () {
-    Volt::route('/confirm-password', 'pages.auth.confirm-password')
-        ->name('password.confirm');
+    Route::get('/confirm-password', [ConfirmPasswordController::class, 'create'])->name('password.confirm');
+    Route::post('/confirm-password', [ConfirmPasswordController::class, 'store']);
+
+    Route::get('/email/verify', [VerifyEmailController::class, 'notice'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
+    Route::post('/email/verification-notification', [VerifyEmailController::class, 'resend'])->middleware(['throttle:6,1'])->name('verification.send');
+
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
-
-Volt::route('/email/verify/{id}/{hash}', 'pages.auth.verify-email')
-    ->middleware(['auth', 'signed'])
-    ->name('verification.verify');
-
-Volt::route('/email/verify', 'pages.auth.verify-email')
-    ->middleware(['auth'])
-    ->name('verification.notice');
-
-Volt::route('/email/verification-notification', 'pages.auth.verify-email')
-    ->middleware(['auth', 'throttle:6,1'])
-    ->name('verification.send');

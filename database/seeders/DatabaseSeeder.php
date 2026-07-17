@@ -50,5 +50,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'super@ppdb.com',
             'role' => 'super_admin',
         ]);
+
+        $this->call([
+            FakeDataSeeder::class,
+        ]);
     }
 }

@@ -28,6 +28,12 @@ class JalurPendaftaran extends Model
         return $this->hasMany(DokumenPersyaratan::class);
     }
 
+    protected $casts = [
+        'tanggal_mulai' => 'date',
+        'tanggal_selesai' => 'date',
+        'aktif' => 'boolean',
+    ];
+
     public function hasilSeleksi()
     {
         return $this->hasMany(HasilSeleksi::class);

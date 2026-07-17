@@ -25,7 +25,7 @@ class DokumenPendaftarController extends Controller
 
         $request->validate([
             'file' => "required|file|mimes:{$formats}|max:{$maxSize}",
-            'dokumen_persyaratan_id' => 'required|exists:dokumen_persyaratans,id'
+            'dokumen_persyaratan_id' => 'required'
         ]);
 
         $file = $request->file('file');
@@ -45,6 +45,7 @@ class DokumenPendaftarController extends Controller
             'pendaftar_id' => $pendaftar->id,
             'dokumen_persyaratan_id' => $persyaratanId,
             'file_path' => $path,
+            'file_original_name' => $file->getClientOriginalName(),
             'status' => 'menunggu_verifikasi',
         ]);
 
