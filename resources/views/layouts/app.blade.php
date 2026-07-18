@@ -35,19 +35,6 @@
                     </button>
                 </div>
 
-                {{-- User Info --}}
-                <div class="px-4 py-4 border-b border-border">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold shrink-0">
-                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                        </div>
-                        <div class="min-w-0">
-                            <p class="text-sm font-medium text-foreground truncate">{{ auth()->user()->name }}</p>
-                            <p class="text-[11px] text-muted-foreground truncate">{{ auth()->user()->email }}</p>
-                        </div>
-                    </div>
-                </div>
-
                 {{-- Nav --}}
                 <nav class="flex-1 px-2 py-3 space-y-0.5 overflow-y-auto" aria-label="Menu navigasi siswa">
                     @php
